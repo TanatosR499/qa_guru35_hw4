@@ -24,7 +24,7 @@ public class GithubSearchTests {
 //        Перейдите в раздел Wiki проекта
         $("#wiki-tab").click();
 //        Убедитесь, что в списке страниц (Pages) есть страница SoftAssertions
-        $("#wiki-body").$(byText("Chapters")).parent().sibling(0).$("li a[href*='Soft']")
+        $("#wiki-body").$("li a[href*='Soft']")
                 .shouldHave(href("https://github.com/selenide/selenide/wiki/SoftAssertions")).click();
 //        Откройте страницу SoftAssertions, проверьте что внутри есть пример кода для JUnit5
         $("#wiki-body").$("[id*='using-junit5']").parent().sibling(0)
