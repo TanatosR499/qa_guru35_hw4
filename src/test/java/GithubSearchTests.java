@@ -28,5 +28,18 @@ public class GithubSearchTests {
 //        Откройте страницу SoftAssertions, проверьте что внутри есть пример кода для JUnit5
         $("#wiki-body").$("[id*='using-junit5']").parent().sibling(0)
                 .shouldHave(attributeMatching("class","^.*source-java.*$"));
+
+        $("#wiki-body").shouldHave(text("""
+                @ExtendWith({SoftAssertsExtension.class})
+                class Tests {
+                  @Test
+                  void test() {
+                    Configuration.assertionMode = SOFT;
+                    open("page.html");
+                
+                    $("#first").should(visible).click();
+                    $("#second").should(visible).click();
+                  }
+                }"""));
     }
 }
