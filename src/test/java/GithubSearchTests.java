@@ -3,6 +3,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class GithubSearchTests {
@@ -41,5 +42,17 @@ public class GithubSearchTests {
                     $("#second").should(visible).click();
                   }
                 }"""));
+    }
+
+    //5 урок. Selenide #2
+    // На главной странице GitHub выберите: Меню -> Solutions -> Enterprize (с помощью команды hover для Solutions).
+    // Убедитесь, что загрузилась нуная страница (например, что заголовок: "The AI-powered developer platform.").
+
+    @Test
+    void searchSolutionsEnterpriseTest(){
+        open("/");
+        $(byClassName("HeaderMenu-nav")).$(byText("Solutions")).hover().sibling(0)
+                .$(byTagAndText("a","Enterprises")).click();
+        $("#hero-section-brand-heading").should(appear).shouldHave(text("The AI-powered developer platform"));
     }
 }
