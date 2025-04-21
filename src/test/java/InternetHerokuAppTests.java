@@ -17,18 +17,22 @@ public class InternetHerokuAppTests {
     @Test
     void DragAndDropWithActionsTest(){
         open("/drag_and_drop");
+        $("#column-a").shouldHave(text("A"));
+        $("#column-b").shouldHave(text("B"));
         actions().clickAndHold( $("#column-a").toWebElement())
                 .moveToElement($("#column-b").toWebElement())
                 .release().perform();
-        $("#column-a").$("header").shouldHave(text("B"));
-        $("#column-b").$("header").shouldHave(text("A"));
+        $("#column-a").shouldHave(text("B"));
+        $("#column-b").shouldHave(text("A"));
     }
 
     @Test
     void DragAndDropWithFunctionTest(){
         open("/drag_and_drop");
+        $("#column-a").shouldHave(text("A"));
+        $("#column-b").shouldHave(text("B"));
         $("#column-a").dragAndDrop(DragAndDropOptions.to("#column-b"));
-        $("#column-a").$("header").shouldHave(text("B"));
-        $("#column-b").$("header").shouldHave(text("A"));
+        $("#column-a").shouldHave(text("B"));
+        $("#column-b").shouldHave(text("A"));
     }
 }
